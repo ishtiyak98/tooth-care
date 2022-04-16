@@ -13,7 +13,7 @@ const MyServices = () => {
     console.log(services);
 
   return (
-    <div id="my-services" className="container my-5 py-5">
+    <div id="services" className="container my-5 py-5">
       <h2 className="text-center text-success fw-bold mb-5">My Services</h2>
       <div className="row gy-5 gx-4">
           {

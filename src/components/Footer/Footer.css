@@ -1,0 +1,17 @@
+.social-icon{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    text-decoration: none;
+    color: white;
+}
+
+.social-icon:hover{
+    background-color: white;
+    color: #198754;
+}
