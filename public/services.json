@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Tooth Whitening",
+        "img": "https://i.ibb.co/YDFQSz3/whitening.jpg",
+        "price": 95,
+        "description":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    },
+    {
+        "id": 2,
+        "name": "Laser Dentistry",
+        "img": "https://i.ibb.co/fHgQc0d/laser.jpg",
+        "price": 150,
+        "description":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    },
+    {
+        "id": 3,
+        "name": "Dental Implants",
+        "img": "https://i.ibb.co/5LJ9Qdd/implant.jpg",
+        "price": 220,
+        "description":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    }
+]

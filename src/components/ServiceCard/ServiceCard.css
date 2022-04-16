@@ -1,0 +1,14 @@
+.service-card{
+    width: 85%;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: transform 0.4s;
+}
+
+.service-card:hover{
+    transform: scale(1.1);
+}
+
+.img-container img{
+    border-radius: 15px 15px 0px 0px;
+}
