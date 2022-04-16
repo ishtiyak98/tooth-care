@@ -6,6 +6,8 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound/NotFound";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
+import ServiceCheckout from "./components/ServiceCheckout/ServiceCheckout";
 import Signup from "./components/Signup/Signup";
 
 function App() {
@@ -16,6 +18,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
+        <Route
+          path="/service/:id"
+          element={
+            <RequireAuth>
+              <ServiceCheckout></ServiceCheckout>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
