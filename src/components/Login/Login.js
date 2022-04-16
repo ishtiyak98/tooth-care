@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { FaTooth } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -22,10 +23,16 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Button className="w-100" variant="primary" type="submit">
+          <Button className="w-100" variant="success" type="submit">
             Login
           </Button>
         </Form>
+        <p className="my-3 text-center">
+          Don't have an account?{" "}
+          <Link className="text-success text-decoration-none" to={"/signup"}>
+            Signup
+          </Link>
+        </p>
       </div>
     </div>
   );

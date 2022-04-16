@@ -1,9 +1,24 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaTooth } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import auth from '../../firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+
+    const handleSignOut = ()=>{
+        Swal.fire({
+            title: "Logged Out!",
+            text: "Successfully logged Out",
+            icon: "success",
+          });
+        signOut(auth);
+    }
+
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
@@ -18,8 +33,10 @@ const Header = () => {
                         <Nav.Link className='mx-1' as={Link} to={"/about"}>About</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link as={Link} to={"/signup"}>Signup</Nav.Link>
-                        <Nav.Link as={Link} to={"/Login"}>Login</Nav.Link>
+                        {
+                            user ? <Nav.Link className='btn btn-success' as={Button} onClick={handleSignOut}>Logout</Nav.Link>  : <Nav.Link as={Link} to={"/Login"}>Login</Nav.Link>
+                        }
+                        
                     </Nav>
                 </Navbar.Collapse>
                 </Container>
