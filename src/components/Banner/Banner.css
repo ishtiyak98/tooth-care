@@ -1,0 +1,16 @@
+.top-banner{
+    height: 93vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0,0,0,0.50)), url('../../Assets/BannerImg/bannerbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header-text{
+    height: 93vh;
+}
+
+.title-text{
+    font-size: 80px;
+}
