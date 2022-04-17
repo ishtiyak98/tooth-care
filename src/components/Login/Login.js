@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword, useUpdatePassword } from "react-firebase-hooks/auth";
-
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
@@ -10,8 +9,6 @@ import "./Login.css";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-  const [updatePassword, updating, updatePassError] = useUpdatePassword(auth);
-
   const navigate = useNavigate();
   let location = useLocation();
 

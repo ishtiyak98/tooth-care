@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
@@ -8,6 +11,7 @@ import LoginWithApp from "../LoginWithApp/LoginWithApp";
 
 const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateProfilError] = useUpdateProfile(auth);
 
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -22,6 +26,12 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  //!----------- handle name input ------------
+  const handleName = (e) => {
+    const name = e.target.value;
+    setUserInfo({ ...userInfo, name });
+  };
+
   const handleEmail = (e) => {
     const email = e.target.value;
 
@@ -29,41 +39,53 @@ const Signup = () => {
       setSignupError({ ...signupError, emailError: `not a valid mail!` });
       setUserInfo({ ...userInfo, email: "" });
     } else {
-      setUserInfo({...userInfo, email})
+      setUserInfo({ ...userInfo, email });
       setSignupError({ ...signupError, emailError: "" });
     }
-    
   };
 
   const handlePassword = (e) => {
     const password = e.target.value;
 
     if (/.{6,}/.test(password) === false) {
-      setSignupError({...signupError,passwordError: `minimum characters must be 6!`,});
+      setSignupError({
+        ...signupError,
+        passwordError: `minimum characters must be 6!`,
+      });
       setUserInfo({ ...userInfo, password: "" });
     } else {
-      setUserInfo({...userInfo, password});
+      setUserInfo({ ...userInfo, password });
       setSignupError({ ...signupError, passwordError: "" });
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log(userInfo);
-    createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+    await createUserWithEmailAndPassword(userInfo?.email, userInfo?.password);
+    await updateProfile({ displayName: userInfo?.name });
   };
 
   if (user) {
     Swal.fire({
-        title: "Account created!",
-        text: "You can login now",
-        icon: "success",
-      });
-      navigate('/login');
+      title: "Account created!",
+      text: "You can login now",
+      icon: "success",
+    });
+    navigate("/login");
   }
 
-  
+  useEffect(() => {
+    if (error) {
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        icon: "error",
+      });
+    }
+  }, [error]);
+
   return (
     <div className="d-flex justify-content-center mt-5">
       <div className="w-25">
@@ -71,7 +93,12 @@ const Signup = () => {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" required />
+            <Form.Control
+              type="text"
+              placeholder="Enter name"
+              required
+              onChange={handleName}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -89,7 +116,12 @@ const Signup = () => {
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" required onChange={handlePassword}/>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              required
+              onChange={handlePassword}
+            />
             <div className="text-danger">
               {signupError?.passwordError ? signupError.passwordError : ""}
             </div>

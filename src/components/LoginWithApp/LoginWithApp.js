@@ -35,8 +35,6 @@ const LoginWithApp = () => {
     }
   }, [googleError]);
 
-  console.log(googleError);
-
   return (
     <div>
       <div className="d-flex justify-content-center">
