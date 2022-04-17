@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 
 const LoginWithApp = () => {
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
   let location = useLocation();
   let navigate = useNavigate();

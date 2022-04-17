@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import About from "./components/About/About";
 import Blogs from "./components/Blogs/Blogs";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route path="/changePass" element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

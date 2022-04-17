@@ -7,7 +7,7 @@ import auth from "../../firebase.init";
 import LoginWithApp from "../LoginWithApp/LoginWithApp";
 
 const Signup = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const [userInfo, setUserInfo] = useState({
     name: "",

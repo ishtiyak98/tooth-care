@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useUpdatePassword } from "react-firebase-hooks/auth";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -9,8 +9,9 @@ import LoginWithApp from "../LoginWithApp/LoginWithApp";
 import "./Login.css";
 
 const Login = () => {
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+  const [updatePassword, updating, updatePassError] = useUpdatePassword(auth);
+
   const navigate = useNavigate();
   let location = useLocation();
 
@@ -114,13 +115,15 @@ const Login = () => {
             Login
           </Button>
         </Form>
+        <Link className="d-block text-end text-success mt-2 text-decoration-none" to={"/changePass"}>Forgot password?</Link>
+
         <p className="my-3 text-center">
           Don't have an account?{" "}
           <Link className="text-success text-decoration-none" to={"/signup"}>
             Signup
           </Link>
         </p>
-
+      
         <LoginWithApp></LoginWithApp>
       </div>
     </div>
