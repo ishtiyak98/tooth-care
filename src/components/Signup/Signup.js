@@ -14,16 +14,36 @@ const Signup = () => {
     password: "",
   });
 
+  const [signupError, setSignupError] = useState({
+    emailError: "",
+    passwordError: "",
+  });
+
   const navigate = useNavigate();
 
   const handleEmail = (e) => {
     const email = e.target.value;
-    setUserInfo({...userInfo, email})
+
+    if (/\S+@\S+\.\S+/.test(email) === false) {
+      setSignupError({ ...signupError, emailError: `not a valid mail!` });
+      setUserInfo({ ...userInfo, email: "" });
+    } else {
+      setUserInfo({...userInfo, email})
+      setSignupError({ ...signupError, emailError: "" });
+    }
+    
   };
 
   const handlePassword = (e) => {
     const password = e.target.value;
-    setUserInfo({...userInfo, password})
+
+    if (/.{6,}/.test(password) === false) {
+      setSignupError({...signupError,passwordError: `minimum characters must be 6!`,});
+      setUserInfo({ ...userInfo, password: "" });
+    } else {
+      setUserInfo({...userInfo, password});
+      setSignupError({ ...signupError, passwordError: "" });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -61,15 +81,21 @@ const Signup = () => {
               required
               onChange={handleEmail}
             />
+            <div className="text-danger">
+              {signupError?.emailError ? signupError.emailError : ""}
+            </div>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" required onChange={handlePassword}/>
+            <div className="text-danger">
+              {signupError?.passwordError ? signupError.passwordError : ""}
+            </div>
           </Form.Group>
 
           <Button className="w-100" variant="success" type="submit">
-            Login
+            Signup
           </Button>
         </Form>
         <p className="my-3 text-center">
