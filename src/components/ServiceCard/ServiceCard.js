@@ -15,7 +15,7 @@ const ServiceCard = ({ service }) => {
             <h3 className="my-3">{name}</h3>
             <p>{description}</p>
             <div className="d-flex align-items-center justify-content-between pb-2">
-              <Link className="btn btn-success" to={`/service/${id}`}>More Details</Link>
+              <Link className="btn btn-success" to={`/checkout/${id}`}>More Details</Link>
               <p className="mb-0 fw-bold fs-5">${price}</p>
             </div>
           </div>
