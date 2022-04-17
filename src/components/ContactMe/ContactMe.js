@@ -7,7 +7,7 @@ import "./ContactMe.css";
 
 const ContactMe = () => {
   return (
-    <div className="my-5 py-5 container" id="contact">
+    <div className="my-5 container" id="contact">
       <h1 className="text-success text-center mb-5">Contact Me</h1>
       <div className="row gy-4">
         <div className="col-lg-6">
