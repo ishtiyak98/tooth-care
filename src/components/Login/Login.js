@@ -5,6 +5,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
+import LoginWithApp from "../LoginWithApp/LoginWithApp";
 import "./Login.css";
 
 const Login = () => {
@@ -119,6 +120,8 @@ const Login = () => {
             Signup
           </Link>
         </p>
+
+        <LoginWithApp></LoginWithApp>
       </div>
     </div>
   );
