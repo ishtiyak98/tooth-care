@@ -9,6 +9,7 @@ const RequireAuth = ({ children }) => {
   let location = useLocation();
   console.log(user);
 
+  //!-------------loading spinner while refreshing --------------
   if (loading) {
     return (
       <div className="position-absolute top-50 start-50 translate-middle">
@@ -17,6 +18,7 @@ const RequireAuth = ({ children }) => {
     );
   }
 
+  //!------------- Redirect page function --------------
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

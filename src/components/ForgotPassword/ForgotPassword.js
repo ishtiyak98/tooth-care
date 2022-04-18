@@ -12,12 +12,13 @@ const ForgotPassword = () => {
 
   const [email, setEmail] = useState("");
 
-
+  //!------- email-input--------
   const handleEmail = (e) => {
     const email = e.target.value;
     setEmail(email);
   };
 
+  //!------- Form submit --------
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email);
@@ -25,6 +26,7 @@ const ForgotPassword = () => {
     toast("Password reset email sent!");
   };
 
+  //!------- sending mail toast --------
   useEffect(()=>{
     if(sending){
         toast("sending mail...");

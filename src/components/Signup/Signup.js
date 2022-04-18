@@ -10,8 +10,8 @@ import auth from "../../firebase.init";
 import LoginWithApp from "../LoginWithApp/LoginWithApp";
 
 const Signup = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-  const [updateProfile, updating, updateProfilError] = useUpdateProfile(auth);
+  const [createUserWithEmailAndPassword, user, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile] = useUpdateProfile(auth);
 
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -32,6 +32,7 @@ const Signup = () => {
     setUserInfo({ ...userInfo, name });
   };
 
+  //!----------- handle name input ------------
   const handleEmail = (e) => {
     const email = e.target.value;
 
@@ -44,6 +45,7 @@ const Signup = () => {
     }
   };
 
+  //!----------- handle password input -------------
   const handlePassword = (e) => {
     const password = e.target.value;
 
@@ -59,6 +61,7 @@ const Signup = () => {
     }
   };
 
+  //!----------- handle form submit -------------
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,6 +70,7 @@ const Signup = () => {
     await updateProfile({ displayName: userInfo?.name });
   };
 
+  //!----------- sweet-alert for successful sign-up -------------
   if (user) {
     Swal.fire({
       title: "Account created!",
@@ -76,6 +80,7 @@ const Signup = () => {
     navigate("/login");
   }
 
+  //!----------- sweet-alert for error -------------
   useEffect(() => {
     if (error) {
       Swal.fire({

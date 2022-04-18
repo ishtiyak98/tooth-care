@@ -12,6 +12,7 @@ const LoginWithApp = () => {
   let navigate = useNavigate();
   let from = location.state?.from?.pathname || "/";
 
+  //!--------google Sign-in--------
   const handleGoogle = () => {
     signInWithGoogle();
   };
@@ -25,6 +26,7 @@ const LoginWithApp = () => {
     navigate(from, { replace: true });
   }
 
+  //!--------google Sign-in Error --------
   useEffect(() => {
     if (googleError) {
       Swal.fire({
@@ -35,7 +37,6 @@ const LoginWithApp = () => {
     }
   }, [googleError]);
 
-  console.log(googleError);
 
   return (
     <div>
