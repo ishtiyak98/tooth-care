@@ -8,7 +8,8 @@ import LoginWithApp from "../LoginWithApp/LoginWithApp";
 import "./Login.css";
 
 const Login = () => {
-  const [signInWithEmailAndPassword, user, error] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
   let location = useLocation();
 
@@ -119,7 +120,10 @@ const Login = () => {
             Login
           </Button>
         </Form>
-        <Link className="d-block text-end text-success mt-2 text-decoration-none" to={"/changePass"}>Forgot password?</Link>
+
+        <div className="text-end mt-2">
+          <Link className="text-success text-decoration-none" to={"/changePass"}>Forgot password?</Link>
+        </div>
 
         <p className="my-3 text-center">
           Don't have an account?{" "}

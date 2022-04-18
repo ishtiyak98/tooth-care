@@ -10,8 +10,8 @@ import auth from "../../firebase.init";
 import LoginWithApp from "../LoginWithApp/LoginWithApp";
 
 const Signup = () => {
-  const [createUserWithEmailAndPassword, user, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-  const [updateProfile] = useUpdateProfile(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateProfileError] = useUpdateProfile(auth);
 
   const [userInfo, setUserInfo] = useState({
     name: "",
