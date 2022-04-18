@@ -9,7 +9,7 @@
 - User can login using Google Account.
 - User can logout by pressing logout button.
 - User can reset his/her password.
-- Service Section and Checkout page has been created.
+- user can checkout a product/service in checkout page.
 
 <br>
 
