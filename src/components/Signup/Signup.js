@@ -87,8 +87,8 @@ const Signup = () => {
   }, [error]);
 
   return (
-    <div className="d-flex justify-content-center mt-5">
-      <div className="w-25">
+    <div className="d-flex justify-content-center mt-5 container">
+      <div className="w-50">
         <h3 className="text-success text-center">Signup</h3>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">

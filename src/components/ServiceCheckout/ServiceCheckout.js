@@ -19,8 +19,8 @@ const ServiceCheckout = () => {
   console.log(user);
   return (
     <div className="container">
-      <h2 className="text-center text-success mt-5">Checkout {id}</h2>
-
+      <h2 className="text-center text-success mt-5 mb-4">Checkout</h2>
+      <h4 className="text-center">Product Id : {id}</h4>
       <div className="w-50 mx-auto">
         <Form onSubmit={handleCheckout}>
           <Form.Group className="mb-3" controlId="formBasicEmail">

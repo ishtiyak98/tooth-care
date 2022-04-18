@@ -9,12 +9,16 @@ const ContactMe = () => {
   return (
     <div className="my-5 container" id="contact">
       <h1 className="text-success text-center mb-5">Contact Me</h1>
-      <div className="row gy-4">
+      <div className="row gy-4 d-flex justify-content-center align-items-center">
         <div className="col-lg-6">
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center align-items-center">
             <div>
               <h4 className="mb-0 text-secondary">Contact me</h4>
-              <h4 className="mb-0 text-secondary">whenever you need</h4>
+              <h4 className="mb-lg-4 mb-md-3 mb-4 text-secondary">whenever you need</h4>
+
+              <h1 className="mb-lg-3 mb-md-3 mb-4 text-secondary text-success">
+                Dr. Md. Ishtiyak Ali Rifat
+              </h1>
               <div className="mt-4 ms-4">
                 <div className="d-flex align-items-center mb-4">
                   <div className="me-3 text-success d-flex align-items-center justify-content-center contact-icon">
@@ -23,7 +27,7 @@ const ContactMe = () => {
                   <div>
                     <h5 className="mb-1 text-secondary">Address</h5>
                     <h6 className="mb-0 fw-light text-secondary">
-                      528 tenth Avenue, Boston, BT 58965
+                      Road 06, Block C, Pirganj, Thakurgaon.
                     </h6>
                   </div>
                 </div>
@@ -35,19 +39,19 @@ const ContactMe = () => {
                   <div>
                     <h5 className="mb-1 text-secondary">Phone</h5>
                     <h6 className="mb-0 fw-light text-secondary">
-                      +1 800 125 65 24
+                      +880 124 125 65 24
                     </h6>
                   </div>
                 </div>
 
                 <div className="d-flex align-items-center mb-4">
                   <div className="me-3 text-success d-flex align-items-center justify-content-center contact-icon">
-                    <AiFillSchedule size={"1.5em"}></AiFillSchedule>
+                    <AiFillSchedule size={"1.7em"}></AiFillSchedule>
                   </div>
                   <div>
                     <h5 className="mb-1 text-secondary">Open Hours</h5>
                     <h6 className="mb-0 fw-light text-secondary">
-                      Mn - St: 8:00am - 9:00pm Sn: Closed
+                      Sat - Thr: 8:00am - 9:00pm Fri: Closed
                     </h6>
                   </div>
                 </div>

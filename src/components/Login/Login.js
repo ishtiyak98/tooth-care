@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -25,6 +25,8 @@ const Login = () => {
     passwordError: "",
   });
 
+
+  //!----------- handle email input -------------
   const handleEmail = (e) => {
     const email = e.target.value;
     if (/\S+@\S+\.\S+/.test(email) === false) {
@@ -36,6 +38,7 @@ const Login = () => {
     }
   };
 
+  //!----------- handle password input -------------
   const handlePassword = (e) => {
     const password = e.target.value;
 
@@ -48,12 +51,14 @@ const Login = () => {
     }
   };
 
+  //!----------- handle form submit -------------
   const handleSubmit = (e) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(loginInfo.email, loginInfo.password);
   };
 
+  //!----------- sweet-alert for successful login -------------
   useEffect(() => {
     if (user) {
       Swal.fire({
@@ -64,7 +69,9 @@ const Login = () => {
       navigate(from, { replace: true });
     }
   }, [user]);
+  
 
+  //!----------- sweet-alert for error login -------------
   useEffect(() => {
     if (error) {
       Swal.fire({
@@ -75,11 +82,11 @@ const Login = () => {
     }
   }, [error]);
 
-  console.log(loginError);
+
 
   return (
-    <div className="d-flex justify-content-center mt-5">
-      <div className="w-25">
+    <div className="d-flex justify-content-center mt-5 container">
+      <div className="w-50">
         <h3 className="text-success text-center">Login</h3>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
